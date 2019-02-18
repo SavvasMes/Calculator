@@ -8,16 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
 
     boolean adding;
-    boolean minuss;
-    boolean multip;
+    boolean minus;
+    boolean multiply;
     boolean division;
-    int num1;
-    int num2;
+    double num1;
+    double num2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final EditText editText = findViewById(R.id.txt_num);
+        final TextView textView = findViewById(R.id.txt_Vw);
 
         Button btn_1 = findViewById(R.id.btn_1);
         Button btn_2 = findViewById(R.id.btn_2);
@@ -131,11 +133,12 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText("");
                     adding = false;
                 } else {
-                    num1 = Integer.parseInt(editText.getText().toString());
+                    num1 = Double.parseDouble(editText.getText().toString());
                     adding = true;
 
                 }
-                 editText.setText(null);
+                 editText.setText("");
+                textView.setText(num1 + " +");
                 //Log.i("yes", String.valueOf(num1));
 
 
@@ -149,13 +152,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (editText.getText()==null) {
                     editText.setText("");
-                    minuss = false;
+                    minus = false;
                 } else {
-                    num1 = Integer.parseInt(editText.getText().toString());
-                    minuss = true;
+                    num1 = Double.parseDouble(editText.getText().toString());
+                    minus = true;
 
                 }
                 editText.setText(null);
+                textView.setText(num1 + " -");
                 //Log.i("yes", String.valueOf(num1));
 
 
@@ -169,13 +173,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (editText.getText()==null) {
                     editText.setText("");
-                    multip = false;
+                    multiply = false;
                 } else {
-                    num1 = Integer.parseInt(editText.getText().toString());
-                    multip = true;
+                    num1 = Double.parseDouble(editText.getText().toString());
+                    multiply = true;
 
                 }
                 editText.setText(null);
+                textView.setText(num1 + " *");
                 //Log.i("yes", String.valueOf(num1));
 
 
@@ -189,11 +194,12 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText("");
                     division = false;
                 } else {
-                    num1 = Integer.parseInt(editText.getText().toString());
+                    num1 = Double.parseDouble(editText.getText().toString());
                     division = true;
 
                 }
                 editText.setText(null);
+                textView.setText(num1 + " /");
                 //Log.i("yes", String.valueOf(num1));
 
 
@@ -205,32 +211,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 num2 = Integer.parseInt(editText.getText().toString());
                 if(adding==true) {
-                    int sum = num1 + num2;
+                    double sum = num1 + num2;
                     editText.setText("" + sum);
+                    textView.setText(""+ num1+" + "+num2);
                     adding=false;
                     Log.i("num", String.valueOf(num2));
                     Log.i("num", String.valueOf(num1));
                 }
 
-                if(minuss==true) {
-                    int sum = num1 - num2;
+                if(minus==true) {
+                    double sum = num1 - num2;
                     editText.setText("" + sum);
-                    minuss=false;
+                    textView.setText(""+ num1+" - "+num2);
+                    minus=false;
                     Log.i("num", String.valueOf(num2));
                     Log.i("num", String.valueOf(num1));
                 }
 
-                if(multip==true) {
-                    int sum = num1 * num2;
+                if(multiply==true) {
+                    double sum = num1 * num2;
                     editText.setText("" + sum);
-                    multip=false;
+                    textView.setText(""+ num1+" * "+num2);
+                    multiply=false;
                     Log.i("num", String.valueOf(num2));
                     Log.i("num", String.valueOf(num1));
                 }
 
                 if(division==true) {
-                    int sum = num1 / num2;
+                    double sum = num1 / num2;
                     editText.setText("" + sum);
+                    textView.setText(""+ num1+" / "+num2);
                     division=false;
                     Log.i("num", String.valueOf(num2));
                     Log.i("num", String.valueOf(num1));
@@ -244,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 num1= 0;
                 num2= 0;
                 editText.setText("");
+                textView.setText("");
             }
         });
 
