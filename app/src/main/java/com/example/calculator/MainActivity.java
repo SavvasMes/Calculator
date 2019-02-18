@@ -11,6 +11,14 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    boolean adding;
+    boolean minuss;
+    boolean multip;
+    boolean division;
+    int num1;
+    int num2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +36,15 @@ public class MainActivity extends AppCompatActivity {
         Button btn_8 = findViewById(R.id.btn_8);
         Button btn_9 = findViewById(R.id.btn_9);
         Button btn_zero = findViewById(R.id.btn_zero);
+        Button btn_dot = findViewById(R.id.btn_dot);
         Button btn_add = findViewById(R.id.btn_add);
         Button btn_minus = findViewById(R.id.btn_minus);
         Button btn_multi = findViewById(R.id.btn_multi);
         Button btn_div = findViewById(R.id.btn_div);
+        Button btn_equals = findViewById(R.id.btn_equals);
+        Button btn_clear = findViewById(R.id.btn_clear);
+
+
 
         btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,13 +116,134 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_dot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText() + ".");
+            }
+        });
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Editable num1 = editText.getText();
-                editText.setText("");
 
-                Log.d(String.valueOf(num1), "Yes");
+                if (editText.getText()==null) {
+                    editText.setText("");
+                    adding = false;
+                } else {
+                    num1 = Integer.parseInt(editText.getText().toString());
+                    adding = true;
+
+                }
+                 editText.setText(null);
+                //Log.i("yes", String.valueOf(num1));
+
+
+            }
+        });
+
+
+
+        btn_minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editText.getText()==null) {
+                    editText.setText("");
+                    minuss = false;
+                } else {
+                    num1 = Integer.parseInt(editText.getText().toString());
+                    minuss = true;
+
+                }
+                editText.setText(null);
+                //Log.i("yes", String.valueOf(num1));
+
+
+            }
+
+
+        });
+
+        btn_multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editText.getText()==null) {
+                    editText.setText("");
+                    multip = false;
+                } else {
+                    num1 = Integer.parseInt(editText.getText().toString());
+                    multip = true;
+
+                }
+                editText.setText(null);
+                //Log.i("yes", String.valueOf(num1));
+
+
+            }
+        });
+
+        btn_div.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editText.getText()==null) {
+                    editText.setText("");
+                    division = false;
+                } else {
+                    num1 = Integer.parseInt(editText.getText().toString());
+                    division = true;
+
+                }
+                editText.setText(null);
+                //Log.i("yes", String.valueOf(num1));
+
+
+            }
+        });
+
+        btn_equals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num2 = Integer.parseInt(editText.getText().toString());
+                if(adding==true) {
+                    int sum = num1 + num2;
+                    editText.setText("" + sum);
+                    adding=false;
+                    Log.i("num", String.valueOf(num2));
+                    Log.i("num", String.valueOf(num1));
+                }
+
+                if(minuss==true) {
+                    int sum = num1 - num2;
+                    editText.setText("" + sum);
+                    minuss=false;
+                    Log.i("num", String.valueOf(num2));
+                    Log.i("num", String.valueOf(num1));
+                }
+
+                if(multip==true) {
+                    int sum = num1 * num2;
+                    editText.setText("" + sum);
+                    multip=false;
+                    Log.i("num", String.valueOf(num2));
+                    Log.i("num", String.valueOf(num1));
+                }
+
+                if(division==true) {
+                    int sum = num1 / num2;
+                    editText.setText("" + sum);
+                    division=false;
+                    Log.i("num", String.valueOf(num2));
+                    Log.i("num", String.valueOf(num1));
+                }
+            }
+        });
+
+        btn_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1= 0;
+                num2= 0;
+                editText.setText("");
             }
         });
 
