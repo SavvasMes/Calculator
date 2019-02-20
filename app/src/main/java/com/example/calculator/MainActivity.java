@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (editText.getText()==null) {
+                if (editText.getText().toString().matches("")) {
                     editText.setText("");
                     adding = false;
                 } else {
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         btn_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editText.getText()==null) {
+                if (editText.getText().toString().matches("")) {
                     editText.setText("");
                     minus = false;
                 } else {
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         btn_multi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editText.getText()==null) {
+                if (editText.getText().toString().matches("")) {
                     editText.setText("");
                     multiply = false;
                 } else {
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         btn_div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editText.getText()==null) {
+                if (editText.getText().toString().matches("")) {
                     editText.setText("");
                     division = false;
                 } else {
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 editText.setText(null);
-                textView.setText(num1 + " /");
+                textView.setText(num1 + " ÷");
                 //Log.i("yes", String.valueOf(num1));
 
 
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         btn_equals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num2 = Integer.parseInt(editText.getText().toString());
+                num2 = Double.parseDouble(editText.getText().toString());
                 if(adding==true) {
                     double sum = num1 + num2;
                     editText.setText("" + sum);
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                 if(division==true) {
                     double sum = num1 / num2;
                     editText.setText("" + sum);
-                    textView.setText(""+ num1+" / "+num2);
+                    textView.setText(""+ num1+" ÷ "+num2);
                     division=false;
                     Log.i("num", String.valueOf(num2));
                     Log.i("num", String.valueOf(num1));

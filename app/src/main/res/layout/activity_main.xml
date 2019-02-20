@@ -89,7 +89,7 @@
             android:layout_height="95dp"
             android:layout_weight="1"
             android:background="@drawable/gradient"
-            android:text="/"
+            android:text="÷"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
