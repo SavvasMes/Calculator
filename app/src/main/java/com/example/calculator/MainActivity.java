@@ -209,6 +209,10 @@ public class MainActivity extends AppCompatActivity {
         btn_equals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(editText.getText().toString().matches("")){
+                    editText.setText("");
+                }else{
+
                 num2 = Double.parseDouble(editText.getText().toString());
                 if(adding==true) {
                     double sum = num1 + num2;
@@ -245,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("num", String.valueOf(num2));
                     Log.i("num", String.valueOf(num1));
                 }
-            }
+            }}
         });
 
         btn_clear.setOnClickListener(new View.OnClickListener() {
